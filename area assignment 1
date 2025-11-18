@@ -1,0 +1,15 @@
+#include <stdio.h>
+const double pi=3.142;
+
+int main()
+{
+    int radius;
+   float result;
+
+    printf("what is the radius: ");
+    scanf("%i",&radius);
+
+    result= 4 * pi* radius* radius;
+
+    printf("what is surface area: %f\n", result);
+}
