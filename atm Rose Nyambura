@@ -1,0 +1,103 @@
+#include <stdio.h>
+
+int login( int correctpin,int userpin);
+float checkbalance(float balanceamount);
+float deposit(float depositamount);
+float withdrawal(float withdrawalamount);
+
+int  main(){
+
+int correctpin=1234;
+int userpin;
+
+
+int attempt=0;
+while(attempt <= 2){
+  printf("userpin:");
+  scanf("%d", &userpin);
+
+  if(correctpin == userpin){
+    printf("\nAccess Granted\n");
+    break;
+
+    
+  } else{
+    printf("attempt %d", attempt);
+    printf("\nIncorrect Pin, Try Again\n");
+
+    if(attempt==2){
+      printf("Maximum attempt reached.System locked");
+    }
+  }
+  
+  attempt++;
+}
+
+
+printf("Menu\n");
+
+ printf("Check current balance.\n");
+ printf("Amount deposited.\n");
+ printf("Amount withdraw in the account.\n");
+ printf("End the session.\n");
+
+ char function;
+if (correctpin==userpin){
+   printf("\n Choice the option: ");
+   scanf("%s",&function);}
+
+ 
+ switch (function)
+ {
+ case '1':
+  printf("Check current balance.");
+  break;
+
+  case '2':
+  printf("Amount deposited.");
+  break;
+ 
+   case '3':
+  printf("Amount withdraw in the account.");
+  break;
+
+    case '4':
+  printf("End the session.");
+  break;
+
+default:
+   printf("Invalid choice.try again.\n");
+}
+
+  float balanceamount;
+  balanceamount=0.00;
+ 
+  printf("what is your current balance: %.2f\n",balanceamount);
+  float depositamount;
+
+  printf("Enter amount to be deposited: ");
+  scanf("%f",&depositamount);
+  
+if(depositamount>0){
+    balanceamount+=depositamount;
+    printf("Deposit successful! New balance: %.2f\n",depositamount );
+  }
+  
+    else {
+        printf("Invalid amount. Deposit must be positive.\n");
+    }
+  float withdrawalamount;
+printf("Enter amount to be withdraw: ");
+scanf("%f",&withdrawalamount);
+if (withdrawalamount <= 0) {
+        printf("Invalid amount. Withdrawal must be positive.\n");
+    } else if (withdrawalamount>balanceamount){
+        printf("Insufficient balance. Current balance: %.2f\n", balanceamount);
+    } else {
+        balanceamount -= withdrawalamount;
+        printf("Withdrawal successful! New balance: %.2f\n", balanceamount);
+        }
+return balanceamount;
+return 0;
+  }
+  
