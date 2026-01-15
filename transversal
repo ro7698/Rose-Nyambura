@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int rows = 6, cols = 4;
+    int arr[6][4];
+
+    
+    printf("Enter values for a 6x4 array:\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("Element [%d][%d]: ", i, j);
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    
+    printf("\nTraversed 2D array elements:\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
