@@ -1,0 +1,45 @@
+#include <stdio.h>
+#define BUFFER_SIZE 5
+
+void insertSample(int buffer[], int *index, int *count, int value) {
+    buffer[*index] = value;
+    *index = (*index + 1) % BUFFER_SIZE;
+    if (*count < BUFFER_SIZE)
+        (*count)++;
+}
+
+void printSamples(int buffer[], int index, int count) {
+    int start = (index - count + BUFFER_SIZE) % BUFFER_SIZE;
+    printf("Stored samples (oldest → newest): ");
+    for (int i = 0; i < count; i++) {
+        int pos = (start + i) % BUFFER_SIZE;
+        printf("%d ", buffer[pos]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int buffer[BUFFER_SIZE];
+    int index = 0, count = 0;
+    int value, choice;
+
+    while (1) {
+        printf("\nMenu:\n1. Insert new sample\n2. Print samples\n3. Exit\nEnter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter new sensor value: ");
+                scanf("%d", &value);
+                insertSample(buffer, &index, &count, value);
+                break;
+            case 2:
+                printSamples(buffer, index, count);
+                break;
+            case 3:
+                return 0;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+}
